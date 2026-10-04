@@ -1,0 +1,207 @@
+/* =========================================================
+   E â€” Motion
+   ê¸°ë³¸ ìƒíƒœ = í”¼ê·¸ë§ˆ ë¸”ë£¨í”„ë¦°íŠ¸ì˜ ì™¼ìª½ ëª¨ì–‘
+   :hover    = ì˜¤ë¥¸ìª½ ëª¨ì–‘ìœ¼ë¡œ íŠ¸ëžœì§€ì…˜
+   ========================================================= */
+
+:root {
+  --blue: #0015ff;
+  --light: #d9d9d9;
+  --mid: #737373;
+  /* ëª¨ë“  ëª¨ì–‘ì´ ê°™ì€ ë¦¬ë“¬ìœ¼ë¡œ ì›€ì§ì´ë„ë¡ í•˜ë‚˜ì˜ ê³¡ì„ ì„ ê³µìœ  */
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --time: 0.8s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+/* ---------- ë¬´ëŒ€ (ì „ì—­ ìœ„ì¹˜) ---------- */
+.stage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 60px;
+  /* ë¸”ë£¨í”„ë¦°íŠ¸ í¬ê¸°ë¥¼ í™”ë©´ì— ë§žê²Œ í‚¤ì›€ */
+  zoom: 1.25;
+}
+
+/* ---------- ê¸€ìž í•˜ë‚˜ (ì§€ì—­ ìœ„ì¹˜ì˜ ê¸°ì¤€ì ) ---------- */
+.letter {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+}
+
+/* ê¸€ìž ì•ˆì˜ ëª¨ë“  íšì€ ê¸€ìž ë°•ìŠ¤ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì ˆëŒ€ ìœ„ì¹˜ */
+.letter > div {
+  position: absolute;
+  left: calc(var(--x) * 1px);
+  top: calc(var(--y) * 1px);
+  transition-duration: var(--time);
+  transition-timing-function: var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+
+/* =========================================================
+   1. ì‚¬ì„  ìŠ¤íŠ¸ë¼ì´í”„ E
+   ========================================================= */
+.e-stripes {
+  width: 84px;
+  height: 160px;
+}
+
+.stripe {
+  width: 4px;
+  height: 28px;
+  background: linear-gradient(to bottom, #000, var(--light));
+  transition-property: left, top;
+}
+
+.e-stripes:hover .stripe,
+.e-stripes:focus .stripe {
+  left: calc(var(--hx) * 1px);
+  top: calc(var(--hy) * 1px);
+}
+
+/* =========================================================
+   2. ì‚¬ê°í˜• E
+   ìž‘ì€ ì‚¬ê°í˜• 21ê°œê°€ í° ì‚¬ê°í˜• 11ê°œ ìžë¦¬ë¡œ ëª¨ì´ë©° ê²¹ì³ì§
+   ========================================================= */
+.e-squares {
+  width: 72px;
+  height: 124px;
+}
+
+.sq {
+  width: 6.8px;
+  height: 6.8px;
+  background: linear-gradient(to right, var(--light), var(--mid));
+  transition-property: left, top, width, height;
+}
+
+.e-squares:hover .sq,
+.e-squares:focus .sq {
+  left: calc(var(--hx) * 1px);
+  top: calc(var(--hy) * 1px);
+  width: 20.5px;
+  height: 20.5px;
+}
+
+/* =========================================================
+   3. ë§‰ëŒ€ E
+   ========================================================= */
+.e-bars {
+  width: 107px;
+  height: 100px;
+}
+
+.bar {
+  width: 91px;
+  height: 30px;
+  background: linear-gradient(to right, #000, var(--blue));
+  transition-property: left, width;
+}
+
+.e-bars:hover .bar-top,
+.e-bars:hover .bar-bottom,
+.e-bars:focus .bar-top,
+.e-bars:focus .bar-bottom {
+  left: 15px;
+  width: 92px;
+}
+
+.e-bars:hover .bar-mid,
+.e-bars:focus .bar-mid {
+  width: 62px;
+}
+
+/* =========================================================
+   4. íƒ€ì› E
+   ê·¸ë¼ë°ì´ì…˜ì€ ì§ì ‘ íŠ¸ëžœì§€ì…˜ì´ ì•ˆ ë˜ë¯€ë¡œ
+   ::before ì— ë©´ì„ ê¹”ê³  opacity ë¡œ íŽ˜ì´ë“œ
+   ========================================================= */
+.e-ellipses {
+  width: 121px;
+  height: 139px;
+}
+
+.ellipse {
+  width: 140px;
+  height: 28px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  transform: rotate(-35deg);
+  overflow: hidden;
+  transition-property: border-color;
+}
+
+.ellipse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #e6e9ff, var(--blue));
+  opacity: 0;
+  transition: opacity var(--time) var(--ease);
+  transition-delay: inherit;
+}
+
+.e-ellipses:hover .ellipse,
+.e-ellipses:focus .ellipse {
+  border-color: transparent;
+}
+
+.e-ellipses:hover .ellipse::before,
+.e-ellipses:focus .ellipse::before {
+  opacity: 1;
+}
+
+/* =========================================================
+   5. ì  ê²©ìž E
+   ========================================================= */
+.e-dots {
+  width: 100px;
+  height: 100px;
+  color: #fff;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  background: currentColor;
+  transition-property: color;
+}
+
+.dot.hollow {
+  background: transparent;
+}
+
+.e-dots:hover .dot,
+.e-dots:focus .dot {
+  color: var(--blue);
+}
+
+/* ì›€ì§ìž„ ì¤„ì´ê¸° ì„¤ì •ì„ ì¼  ì‚¬ìš©ìžì—ê²ŒëŠ” ì¦‰ì‹œ ì „í™˜ */
+@media (prefers-reduced-motion: reduce) {
+  .letter > div,
+  .ellipse::before {
+    transition-duration: 0.01s;
+    transition-delay: 0s;
+  }
+}
