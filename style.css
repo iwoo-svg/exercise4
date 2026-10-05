@@ -17,12 +17,11 @@ body {
   margin: 0 auto;
 }
 
-/* each letter is placed on the page (global) */
 .letter {
   position: absolute;
 }
 
-/* every piece inside a letter is placed inside the letter (local) */
+
 .letter div {
   position: absolute;
 }
@@ -34,7 +33,7 @@ body {
 .dots    { left: 1023px; top: 319px; width: 156px; height: 157px; }
 
 
-/* ---------- 1. stripes ---------- */
+/*  1. stripes  */
 .stripe-row {
   left: 0px;
 }
@@ -60,7 +59,7 @@ body {
 .stripe:nth-child(8) { left: 69px; top: 0px; }
 
 
-/* ---------- 2. square dots ---------- */
+/*  2. square dots  */
 .sq {
   width: 10.7px;
   height: 10.7px;
@@ -83,7 +82,7 @@ body {
 .spine .sq:nth-child(8) { top: 161.7px; }
 .spine .sq:nth-child(9) { top: 183px; }
 
-/* the three arms */
+/*three arms */
 .arm {
   left: 0px;
 }
@@ -98,7 +97,7 @@ body {
 .arm .sq:nth-child(4) { left: 93.9px; }
 
 
-/* ---------- 3. bars ---------- */
+/*  3. bars  */
 .bar {
   left: 0px;
   width: 143px;
@@ -111,7 +110,7 @@ body {
 .bar:nth-child(3) { top: 110px; }
 
 
-/* ---------- 4. ovals ---------- */
+/*  4. ovals  */
 .oval {
   width: 219px;
   height: 44px;
@@ -125,7 +124,7 @@ body {
 .oval:nth-child(3) { left: -18px; top: 131px; }
 
 
-/* ---------- 5. dot grid ---------- */
+/*  5. dot grid  */
 .dot-row {
   left: 0px;
 }
