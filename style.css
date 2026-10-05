@@ -1,11 +1,4 @@
-
-:root {
-  --blue: #0015ff;
-  --light: #d9d9d9;
-  --mid: #737373;
-  --ease: cubic-bezier(0.65, 0, 0.35, 1);
-  --time: 0.8s;
-}
+/* Exercise 4 — Letterform E (MacBook Air - 2) */
 
 * {
   margin: 0;
@@ -14,164 +7,150 @@
 }
 
 body {
-  background: #000;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow-x: hidden;
+  background-color: black;
 }
 
-.stage {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-  padding: 60px;
-  zoom: 1.25;
-}
-
-.letter {
+.canvas {
   position: relative;
-  cursor: pointer;
-  outline: none;
+  width: 1280px;
+  height: 832px;
+  margin: 0 auto;
 }
 
-.letter > div {
+/* each letter is placed on the page (global) */
+.letter {
   position: absolute;
-  left: calc(var(--x) * 1px);
-  top: calc(var(--y) * 1px);
-  transition-duration: var(--time);
-  transition-timing-function: var(--ease);
-  transition-delay: var(--d, 0ms);
 }
 
-.e-stripes {
-  width: 84px;
-  height: 160px;
+/* every piece inside a letter is placed inside the letter (local) */
+.letter div {
+  position: absolute;
 }
+
+.stripes { left: 100px;  top: 292px; width: 75px;  height: 251px; }
+.squares { left: 278px;  top: 319px; width: 105px; height: 194px; }
+.bars    { left: 485px;  top: 324px; width: 143px; height: 157px; }
+.ovals   { left: 731px;  top: 288px; width: 189px; height: 218px; }
+.dots    { left: 1023px; top: 319px; width: 156px; height: 157px; }
+
+
+/* ---------- 1. stripes ---------- */
+.stripe-row {
+  left: 0px;
+}
+
+.stripe-row:nth-child(1) { top: 0px; }
+.stripe-row:nth-child(2) { top: 65px; }
+.stripe-row:nth-child(3) { top: 130px; }
 
 .stripe {
-  width: 4px;
-  height: 28px;
-  background: linear-gradient(to bottom, #000, var(--light));
-  transition-property: left, top;
+  width: 6px;
+  height: 44px;
+  border-radius: 20px;
+  background: linear-gradient(black, #d9d9d9);
 }
 
-.e-stripes:hover .stripe,
-.e-stripes:focus .stripe {
-  left: calc(var(--hx) * 1px);
-  top: calc(var(--hy) * 1px);
-}
+.stripe:nth-child(1) { left: 0px;  top: 77px; }
+.stripe:nth-child(2) { left: 10px; top: 66px; }
+.stripe:nth-child(3) { left: 21px; top: 55px; }
+.stripe:nth-child(4) { left: 30px; top: 44px; }
+.stripe:nth-child(5) { left: 39px; top: 32px; }
+.stripe:nth-child(6) { left: 49px; top: 22px; }
+.stripe:nth-child(7) { left: 60px; top: 11px; }
+.stripe:nth-child(8) { left: 69px; top: 0px; }
 
-.e-squares {
-  width: 72px;
-  height: 124px;
-}
 
+/* ---------- 2. square dots ---------- */
 .sq {
-  width: 6.8px;
-  height: 6.8px;
-  background: linear-gradient(to right, var(--light), var(--mid));
-  transition-property: left, top, width, height;
+  width: 10.7px;
+  height: 10.7px;
+  background: linear-gradient(to right, #d9d9d9, #737373);
 }
 
-.e-squares:hover .sq,
-.e-squares:focus .sq {
-  left: calc(var(--hx) * 1px);
-  top: calc(var(--hy) * 1px);
-  width: 20.5px;
-  height: 20.5px;
-}
-.e-bars {
-  width: 107px;
-  height: 100px;
+/* the vertical line */
+.spine {
+  left: 0px;
+  top: 0px;
 }
 
+.spine .sq:nth-child(1) { top: 0px; }
+.spine .sq:nth-child(2) { top: 22.6px; }
+.spine .sq:nth-child(3) { top: 46.4px; }
+.spine .sq:nth-child(4) { top: 67.8px; }
+.spine .sq:nth-child(5) { top: 91.5px; }
+.spine .sq:nth-child(6) { top: 115.3px; }
+.spine .sq:nth-child(7) { top: 137.9px; }
+.spine .sq:nth-child(8) { top: 161.7px; }
+.spine .sq:nth-child(9) { top: 183px; }
+
+/* the three arms */
+.arm {
+  left: 0px;
+}
+
+.arm:nth-child(2) { top: 0px; }
+.arm:nth-child(3) { top: 91.5px; }
+.arm:nth-child(4) { top: 183px; }
+
+.arm .sq:nth-child(1) { left: 23.8px; }
+.arm .sq:nth-child(2) { left: 46.4px; }
+.arm .sq:nth-child(3) { left: 70.1px; }
+.arm .sq:nth-child(4) { left: 93.9px; }
+
+
+/* ---------- 3. bars ---------- */
 .bar {
-  width: 91px;
-  height: 30px;
-  background: linear-gradient(to right, #000, var(--blue));
-  transition-property: left, width;
+  left: 0px;
+  width: 143px;
+  height: 47px;
+  background: linear-gradient(to right, black, #0015ff);
 }
 
-.e-bars:hover .bar-top,
-.e-bars:hover .bar-bottom,
-.e-bars:focus .bar-top,
-.e-bars:focus .bar-bottom {
-  left: 15px;
-  width: 92px;
-}
+.bar:nth-child(1) { top: 0px; }
+.bar:nth-child(2) { top: 55px; }
+.bar:nth-child(3) { top: 110px; }
 
-.e-bars:hover .bar-mid,
-.e-bars:focus .bar-mid {
-  width: 62px;
-}
 
-.e-ellipses {
-  width: 121px;
-  height: 139px;
-}
-
-.ellipse {
-  width: 140px;
-  height: 28px;
-  border: 1px solid #fff;
+/* ---------- 4. ovals ---------- */
+.oval {
+  width: 219px;
+  height: 44px;
+  border: 1px solid white;
   border-radius: 50%;
   transform: rotate(-35deg);
-  overflow: hidden;
-  transition-property: border-color;
 }
 
-.ellipse::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, #e6e9ff, var(--blue));
-  opacity: 0;
-  transition: opacity var(--time) var(--ease);
-  transition-delay: inherit;
+.oval:nth-child(1) { left: -12px; top: 43px; }
+.oval:nth-child(2) { left: -12px; top: 88px; }
+.oval:nth-child(3) { left: -18px; top: 131px; }
+
+
+/* ---------- 5. dot grid ---------- */
+.dot-row {
+  left: 0px;
 }
 
-.e-ellipses:hover .ellipse,
-.e-ellipses:focus .ellipse {
-  border-color: transparent;
-}
-
-.e-ellipses:hover .ellipse::before,
-.e-ellipses:focus .ellipse::before {
-  opacity: 1;
-}
-
-.e-dots {
-  width: 100px;
-  height: 100px;
-  color: #fff;
-}
+.dot-row:nth-child(1) { top: 0px; }
+.dot-row:nth-child(2) { top: 34.3px; }
+.dot-row:nth-child(3) { top: 68.7px; }
+.dot-row:nth-child(4) { top: 103px; }
+.dot-row:nth-child(5) { top: 137.3px; }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 19px;
+  height: 19px;
+  border: 1px solid white;
   border-radius: 50%;
-  border: 1px solid currentColor;
-  background: currentColor;
-  transition-property: color;
+  background-color: white;
 }
 
-.dot.hollow {
-  background: transparent;
-}
+.dot:nth-child(1) { left: 0px; }
+.dot:nth-child(2) { left: 34.3px; }
+.dot:nth-child(3) { left: 68.7px; }
+.dot:nth-child(4) { left: 103px; }
+.dot:nth-child(5) { left: 137.3px; }
 
-.e-dots:hover .dot,
-.e-dots:focus .dot {
-  color: var(--blue);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .letter > div,
-  .ellipse::before {
-    transition-duration: 0.01s;
-    transition-delay: 0s;
-  }
+/* empty dots = negative space */
+.hollow {
+  background-color: transparent;
 }
